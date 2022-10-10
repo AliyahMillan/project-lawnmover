@@ -137,7 +137,7 @@ public:
 
 // Algorithm that sorts disks using the alternate algorithm.
 sorted_disks sort_alternate(const disk_state& before) {
-	int numOfSwap = 0;                                                                      //record # of step swap/ BEGIN TODO
+	int numOfSwap = 0;                                                                      //record # of step swap/ BEGIN TODO 
 	disk_state state = before;
 	for(size_t i = 0; i < state.total_count() + 1; i++) {
 	  if(i % 2 == 0) {
@@ -149,7 +149,7 @@ sorted_disks sort_alternate(const disk_state& before) {
 	      }
 	    }
 	    else {
-	      for(int j = 1; j < state.total_count() - 2; j=j+2) {
+	      for(size_t j = 1; j < state.total_count() - 2; j=j+2) {
 		if(state.get(j) > state.get(j+1)) {
 		  state.swap(j);
 		  numOfSwap++;
