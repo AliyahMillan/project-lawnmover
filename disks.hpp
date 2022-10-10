@@ -164,10 +164,10 @@ sorted_disks sort_alternate(const disk_state& before) {
 // Algorithm that sorts disks using the lawnmower algorithm.                             /////////////BEGIN OF NEXT TODO
 sorted_disks sort_lawnmower(const disk_state& before) {
 	disk_state state=before;
-	bool isGoingForward=true;
+	bool movingRight=true;
 	size_t numOfSwap=0, left=1, right=before.total_count()-1, maxIterations=before.total_count()/2;
 	for (size_t i=0; i<before.total_count()/2; i++) {
-		if (isGoingForward) {						// !isGoingForward is going from left to right
+		if (movingRight) {						// movingRight is going from left to right
 			for (size_t j=left; j<=right; j+=2) {
 				disk_color currentColor=state.get(j);
 				if (currentColor==DISK_DARK) {
@@ -176,9 +176,9 @@ sorted_disks sort_lawnmower(const disk_state& before) {
 					numOfSwap++;
 				}
 			}
-			isGoingForward=false;
+			movingRight=false;
 		}
-		else {								// isGoingForward is going right to left
+		else {								// movingRight is going right to left
 			for (size_t j=right; j>=left; j-=2) {
 				disk_color currentColor=state.get(j);
 				if (currentColor==DISK_DARK) {
@@ -187,7 +187,7 @@ sorted_disks sort_lawnmower(const disk_state& before) {
 					numOfSwap++;
 				}
 			}
-			isGoingForward = true;
+			movingRight = true;
 		}
 		left++;
 		right--;
