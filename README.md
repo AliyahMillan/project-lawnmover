@@ -1,7 +1,9 @@
 # project-lawnmover
 
 
-Aliyah Millan and Ethan Bockler
+Aliyah Millan: millan_1802@csu.fullerton.edu
+
+Ethan Bockler: ethanbockler@gmail.com
 
 
 CPSC-335 Project 1
