@@ -165,7 +165,7 @@ sorted_disks sort_alternate(const disk_state& before) {
 sorted_disks sort_lawnmower(const disk_state& before) {
 	disk_state state=before;
 	bool movingRight=true;
-	size_t numOfSwap=0, left=1, right=before.total_count()-1, maxIterations=before.total_count()/2;
+	size_t numOfSwap=0, left=1, right=before.total_count()-1;
 	for (size_t i=0; i<before.total_count()/2; i++) {
 		if (movingRight) {						// movingRight is going from left to right
 			for (size_t j=left; j<=right; j+=2) {
