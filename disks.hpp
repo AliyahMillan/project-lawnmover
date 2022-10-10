@@ -167,7 +167,7 @@ sorted_disks sort_lawnmower(const disk_state& before) {
 	bool movingRight=true;
 	size_t numOfSwap=0, left=1, right=before.total_count()-1;
 	for (size_t i=0; i<before.total_count()/2; i++) {
-		if (movingRight) {						// movingRight is going from left to right
+		if (movingRight) {						
 			for (size_t j=left; j<=right; j+=2) {
 				disk_color currentColor=state.get(j);
 				if (currentColor==DISK_DARK) {
@@ -178,7 +178,7 @@ sorted_disks sort_lawnmower(const disk_state& before) {
 			}
 			movingRight=false;
 		}
-		else {								// movingRight is going right to left
+		else {								
 			for (size_t j=right; j>=left; j-=2) {
 				disk_color currentColor=state.get(j);
 				if (currentColor==DISK_DARK) {
