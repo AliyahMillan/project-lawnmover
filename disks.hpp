@@ -160,11 +160,38 @@ sorted_disks sort_alternate(const disk_state& before) {
   return sorted_disks(disk_state(state), numOfSwap);                                           /////////END OF TODO
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Algorithm that sorts disks using the lawnmower algorithm.                             /////////////BEGIN OF NEXT TODO
 sorted_disks sort_lawnmower(const disk_state& before) {
-  	
-	  }
+	disk_state after=before;
+	bool isGoingForward=true;
+	size_t swapCount=0, left=1, right=before.total_count()-1, maxIterations=before.total_count()/2;
+	for (size_t i=0; i<before.total_count()/2; i++) {
+		if (isGoingForward) {						// !isGoingForward is moving from left to right
+			for (size_t j=left; j<=right; j+=2) {
+				disk_color currentColor=after.get(j);
+				if (currentColor==DISK_DARK) {
+					size_t swapIndex=j-1;
+					after.swap(swapIndex);
+					swapCount++;
+				}
+			}
+			isGoingForward=false;
+		}
+		else {								// isGoingForward is moving right to left
+			for (size_t j=right; j>=left; j-=2) {
+				disk_color currentColor=after.get(j);
+				if (currentColor==DISK_DARK) {
+					size_t swapIndex=j-1;
+					after.swap(swapIndex);
+					swapCount++;
+				}
+			}
+			isGoingForward = true;
+		}
+		left++;
+		right--;
+	}
 
-  return sorted_disks(disk_state(state), numOfSwap);
+	return sorted_disks(after, swapCount);
 }
-                                                                                         /////// END OF TODO
