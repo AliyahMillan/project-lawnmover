@@ -1,8 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 // disks.hpp
 //
-// Definitions for two algorithms that each solve the alternating disks
-// problem.
+// Definitions for two algorithms that each solve the alternating disks problem.
 //
 // As provided, this header has four functions marked with TODO comments.
 // You need to write in your own implementation of these functions.
@@ -10,8 +9,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #pragma once
-
-
 
 #include <algorithm>
 #include <cassert>
@@ -27,13 +24,10 @@ enum disk_color { DISK_LIGHT, DISK_DARK};
 class disk_state {
 private:
   std::vector<disk_color> _colors;
-
 public:
   disk_state(size_t light_count)
     : _colors(light_count * 2, DISK_LIGHT) {
-
     assert(light_count > 0);
-
     for (size_t i = 1; i < _colors.size(); i += 2) {
       _colors[i] = DISK_DARK;
     }
@@ -126,7 +120,6 @@ private:
   unsigned _swap_count;
 
 public:
-
   sorted_disks(const disk_state& after, unsigned swap_count)
     : _after(after), _swap_count(swap_count) { }
 
@@ -144,18 +137,34 @@ public:
 
 // Algorithm that sorts disks using the alternate algorithm.
 sorted_disks sort_alternate(const disk_state& before) {
-	int numOfSwap = 0;                                                                      //record # of step swap
- 
-          }
-
-  return sorted_disks(disk_state(state), numOfSwap);
+	int numOfSwap = 0;                                                                      //record # of step swap/ BEGIN TODO
+	disk_state state = before;
+	for(size_t i = 0; i < state.total_count() + 1; i++) {
+	  if(i % 2 == 0) {
+	    for(size_t j = 0; j < state.total_count() - 1; j=j+2) {
+		if(state.get(j) > state.get(j+1)) {
+		  state.swap(j);
+		  numOfSwap++;
+		}
+	      }
+	    }
+	    else {
+	      for(int j = 1; j < state.total_count() - 2; j=j+2) {
+		if(state.get(j) > state.get(j+1)) {
+		  state.swap(j);
+		  numOfSwap++;
+		}
+	      }
+	    }
+	  }
+  return sorted_disks(disk_state(state), numOfSwap);                                           /////////END OF TODO
 }
 
-
-// Algorithm that sorts disks using the lawnmower algorithm.
+// Algorithm that sorts disks using the lawnmower algorithm.                             /////////////BEGIN OF NEXT TODO
 sorted_disks sort_lawnmower(const disk_state& before) {
   	
 	  }
 
   return sorted_disks(disk_state(state), numOfSwap);
 }
+                                                                                         /////// END OF TODO
