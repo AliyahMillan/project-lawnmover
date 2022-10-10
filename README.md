@@ -4,7 +4,7 @@
 
 Aliyah Millan: millan_1802@csu.fullerton.edu
 
-Ethan Bockler: ethanbockler@gmail.com
+Ethan Bockler: ethanbockler@gmail.com, ethanbockler@csu.fullerton.edu
 
 
 CPSC-335 Project 1
